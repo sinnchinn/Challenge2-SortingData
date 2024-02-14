@@ -309,7 +309,7 @@ const pplAge = async () => {
 const pplHeight = async () => {
     let pplArray = await PeopleData();
 
-    const pplFirst = pplArray.split(" ").sort(((a, b) => a.Height - b.Height));
+    const pplFirst = pplArray.sort(((a, b) => a.Height - b.Height));
     console.log(pplFirst);
 }
 

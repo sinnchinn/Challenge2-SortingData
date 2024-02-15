@@ -309,8 +309,50 @@ const pplAge = async () => {
 const pplHeight = async () => {
     let pplArray = await PeopleData();
 
-    const pplFirst = pplArray.sort(((a, b) => a.Height - b.Height));
-    console.log(pplFirst);
+    const pplFirst = pplArray.map(people => people.Height.split(" ")).sort((a, b) => a.Height[0] - b.Height[0] );
+
+    console.log(pplFirst)
+
+    pplFirst.map(people => {
+        let td1= document.createElement("td");
+        td1.textContent = people.Id;
+        console.log(td1);
+        td1.className = "px-6 py-4";
+    
+        let td2 = document.createElement("td");
+        td2.textContent = people.FirstName;
+        td2.className = "px-6 py-4";
+    
+        let td3 = document.createElement("td");
+        td3.textContent = people.LastName;
+        td3.className = "px-6 py-4";
+    
+        let td4 = document.createElement("td");
+        td4.textContent = people.Email;
+        td4.className = "px-6 py-4";
+    
+        let td5 = document.createElement("td");
+        td5.textContent = people.Age;
+        td5.className = "px-6 py-4";
+    
+        let td6 = document.createElement("td");
+        td6.textContent = people.Height;
+        td6.className = "px-6 py-4";
+    
+        let tr = document.createElement("tr");
+        tr.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+    
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+    
+        tableBody.appendChild(tr)
+    })
+
+
 }
 
 pplHeight();
@@ -352,6 +394,7 @@ sortAge.addEventListener('click', async () => {
 sortHeight.addEventListener('click', async () => {
     tableBody.textContent = "";
 
+    // await pplHeight();
 })
 
 export { PeopleData }
